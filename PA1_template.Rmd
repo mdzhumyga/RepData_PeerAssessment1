@@ -50,7 +50,5 @@ for (Var in names(activitydata)) {
 }
 
 ```
+Devise a strategy for filling in all of the missing values in the dataset- missing values could be replaced with mean/median for that 5-minute interval, 
 
-
-
-## Are there differences in activity patterns between weekdays and weekends?
