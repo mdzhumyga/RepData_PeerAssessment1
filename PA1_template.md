@@ -80,7 +80,7 @@ subset(agg_by_interval, agg_by_interval$x == max(agg_by_interval$x, na.rm = TRUE
 
 
 ## Imputing missing values
-TOtal number of N/A's
+Total number of N/A's
 
 ```r
 for (Var in names(activitydata)) {
@@ -95,7 +95,5 @@ for (Var in names(activitydata)) {
 ## [1] "steps" "2304"
 ```
 
+Devise a strategy for filling in all of the missing values in the dataset- missing values could be replaced with mean/median for that 5-minute interval, 
 
-
-
-## Are there differences in activity patterns between weekdays and weekends?
