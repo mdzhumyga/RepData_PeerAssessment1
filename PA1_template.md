@@ -21,9 +21,9 @@ head(activitydata)
 ```
 
 
-## What is mean total number of steps taken per day?
 
-Calculate and report the mean and median total number of steps taken per day
+## What is mean total number of steps taken per day?
+Calculate mean and median
 
 ```r
 agg_by_date <- aggregate(activitydata$steps, by = list(date = activitydata$date), 
@@ -45,6 +45,7 @@ median(agg_by_date$x, na.rm = TRUE)
 
 Make a histogram of the total number of steps taken each day
 
+
 ```r
 library(datasets)
 hist(agg_by_date$x, xlab = "steps be date", ylab = "frequency", main = "Histogram of total number of steps taken each day")
@@ -54,7 +55,6 @@ hist(agg_by_date$x, xlab = "steps be date", ylab = "frequency", main = "Histogra
 
 
 ## What is the average daily activity pattern?
-
 Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
 ```r
@@ -68,8 +68,7 @@ plot(agg_by_interval$index, agg_by_interval$x, main = "Time series plot", type =
 
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
 
-
-Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
+#Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
 ```r
 subset(agg_by_interval, agg_by_interval$x == max(agg_by_interval$x, na.rm = TRUE))$index
@@ -81,7 +80,7 @@ subset(agg_by_interval, agg_by_interval$x == max(agg_by_interval$x, na.rm = TRUE
 
 
 ## Imputing missing values
-Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)
+TOtal number of N/A's
 
 ```r
 for (Var in names(activitydata)) {

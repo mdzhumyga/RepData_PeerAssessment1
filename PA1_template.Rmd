@@ -3,7 +3,7 @@
 
 ## Loading and preprocessing the data
 
-```{r,echo=TURE}
+```{r,echo=TRUE}
 setwd("C:/Disk A/Different/Economentrics/Coursera/Reprodusible research")
 activitydata<-read.csv("./activity.csv", header=TRUE)
 head(activitydata)
@@ -12,15 +12,15 @@ head(activitydata)
 
 ## What is mean total number of steps taken per day?
 Calculate mean and median
-```{r,echo=TURE}
+```{r,echo=TRUE}
+agg_by_date <-aggregate(activitydata$steps, by=list(date=activitydata$date),  FUN=mean,na.rm=TRUE)  
 mean(agg_by_date$x,na.rm=TRUE)
 median(agg_by_date$x,na.rm=TRUE)
 ```
 Make a histogram of the total number of steps taken each day
 
 ```{r,echo=TRUE}
-agg_by_date <-aggregate(activitydata$steps, by=list(date=activitydata$date),  FUN=mean,na.rm=TRUE)               
-print(agg_by_date)
+         
 library(datasets)
 hist(agg_by_date$x,xlab="steps be date",ylab="frequency",main="Histogram of total number of steps taken each day")
 ```
@@ -29,15 +29,27 @@ hist(agg_by_date$x,xlab="steps be date",ylab="frequency",main="Histogram of tota
 Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 ```{r,echo=TRUE}
 agg_by_interval <-aggregate(activitydata$steps, by=list(interv=activitydata$interval),  FUN=mean,na.rm=TRUE)  
-print(agg_by_interval)
 agg_by_interval$index<-agg_by_interval$interv/5
 
 plot(agg_by_interval$index,agg_by_interval$x,main="Time series plot",type="l", 
      pch=16,xlab="daily interval",ylab="Average number of steps")
 ```
-
+#Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
+```{r,echo=TRUE}
+subset(agg_by_interval,agg_by_interval$x==max(agg_by_interval$x,na.rm=TRUE))$index
+```
 
 ## Imputing missing values
+Total number of N/A's
+```{r, echo=TRUE}
+for (Var in names(activitydata)) {
+        missing <- sum(is.na(activitydata[,Var]))
+        if (missing > 0) {
+                print(c(Var,missing))
+        }
+}
+
+```
 
 
 
