@@ -34,7 +34,7 @@ agg_by_interval$index<-agg_by_interval$interv/5
 plot(agg_by_interval$index,agg_by_interval$x,main="Time series plot",type="l", 
      pch=16,xlab="daily interval",ylab="Average number of steps")
 ```
-#Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
+## Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 ```{r,echo=TRUE}
 subset(agg_by_interval,agg_by_interval$x==max(agg_by_interval$x,na.rm=TRUE))$index
 ```
